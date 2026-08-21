@@ -93,8 +93,26 @@
     .step-card h3 { font-size: 22px; font-weight: 700; margin: 20px 0 12px; }
     .step-card p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 20px; }
     .step-links { display: flex; flex-direction: column; gap: 10px; }
-    .step-link { padding: 10px 20px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; color: #00d4ff; font-size: 14px; text-decoration: none; transition: all 0.2s; }
+    .step-link { padding: 10px 20px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; color: #00d4ff; font-size: 14px; text-decoration: none; transition: all 0.2s; cursor: pointer; }
     .step-link:hover { background: rgba(0,212,255,0.15); }
+    .brand-tabs { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .brand-tab { padding: 10px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .brand-tab:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+    .brand-tab.active { background: linear-gradient(135deg, #00d4ff, #0066ff); border-color: transparent; color: #fff; }
+    .brand-content { display: none; }
+    .brand-content.active { display: block; }
+    .install-guide { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; }
+    .install-step { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .install-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .install-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .install-step h4 .step-icon { width: 22px; height: 22px; background: linear-gradient(135deg, #00d4ff, #0066ff); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .install-step p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 10px; }
+    .install-step ul { list-style: none; padding-left: 0; }
+    .install-step li { font-size: 13px; color: rgba(255,255,255,0.6); padding: 6px 0 6px 20px; position: relative; line-height: 1.6; }
+    .install-step li::before { content: '▸'; position: absolute; left: 0; color: #00d4ff; }
+    .tip-box { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); border-radius: 8px; padding: 12px 16px; margin-top: 16px; }
+    .tip-box strong { color: #00d4ff; font-size: 13px; }
+    .tip-box p { font-size: 12px; color: rgba(255,255,255,0.7); margin: 4px 0 0; line-height: 1.6; }
 
     /* 下载区域 */
     .download { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; }
@@ -163,7 +181,7 @@
         <p class="hero-desc">电视家重生版，汇聚央视、卫视、地方台、港澳台等1000+直播频道，永久免费，无广告打扰，支持手机投屏、极简桌面等功能，让看电视更简单。</p>
         <div class="hero-actions">
           <a href="https://pan.29o.cn/down.php/babc09863b2a0313c56ffc5c8eeffd73.apk" class="btn-primary" download>⬇ 立即下载</a>
-          <a href="tutorial.html" class="btn-secondary">📖 安装教程</a>
+          <a href="#tutorial" class="btn-secondary">📖 安装教程</a>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
@@ -313,11 +331,91 @@
           <div class="step-num">1</div>
           <h3>电视安装电视家重生</h3>
           <p>选择您的电视品牌，查看对应安装教程，几分钟即可完成安装。</p>
-          <div class="step-links">
-            <a href="tutorial.html#hisense" class="step-link">📺 海信电视安装教程</a>
-            <a href="tutorial.html#xiaomi" class="step-link">📺 小米电视安装教程</a>
-            <a href="tutorial.html#huawei" class="step-link">📺 华为/荣耀电视安装教程</a>
-            <a href="tutorial.html#other" class="step-link">📺 其他品牌安装教程</a>
+          <div class="brand-tabs">
+            <div class="brand-tab active" data-brand="hisense">📺 海信</div>
+            <div class="brand-tab" data-brand="xiaomi">📺 小米</div>
+            <div class="brand-tab" data-brand="huawei">📺 华为/荣耀</div>
+            <div class="brand-tab" data-brand="other">📺 其他品牌</div>
+          </div>
+          <div class="brand-content active" id="hisense">
+            <div class="install-guide">
+              <div class="install-step">
+                <h4><span class="step-icon">1</span> 允许安装未知来源应用</h4>
+                <p>进入电视「设置」→「通用」或「安全」→ 找到「未知来源」选项 → 设置为「允许」</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">2</span> 下载安装包到U盘</h4>
+                <p>官网下载 APK 安装包，复制到 U 盘根目录（建议使用 FAT32 格式 U 盘）</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">3</span> 通过U盘安装</h4>
+                <p>U盘插入电视 USB 接口 → 打开「文件管理」→ 找到 APK 文件 → 点击安装</p>
+              </div>
+              <div class="tip-box">
+                <strong>� 提示：</strong>
+                <p>海信电视部分型号需使用「聚好下载」安装，U盘安装失败可尝试通过应用市场搜索"电视家"下载。</p>
+              </div>
+            </div>
+          </div>
+          <div class="brand-content" id="xiaomi">
+            <div class="install-guide">
+              <div class="install-step">
+                <h4><span class="step-icon">1</span> 允许安装未知来源应用</h4>
+                <p>进入「设置」→「通用设置」→「安全」→ 开启「允许安装未知来源应用」</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">2</span> 下载安装包到U盘</h4>
+                <p>官网下载 APK，复制到 FAT32 格式 U 盘</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">3</span> 通过U盘安装</h4>
+                <p>打开「高清播放器」或「文件管理」→ 找到 APK → 点击安装</p>
+              </div>
+              <div class="tip-box">
+                <strong>� 提示：</strong>
+                <p>小米电视也可通过「投屏神器」APP 远程安装，或使用 ADB 命令安装。</p>
+              </div>
+            </div>
+          </div>
+          <div class="brand-content" id="huawei">
+            <div class="install-guide">
+              <div class="install-step">
+                <h4><span class="step-icon">1</span> 开启未知来源安装</h4>
+                <p>进入「设置」→「高级设置」→「安全」→ 开启「允许安装未知来源应用」</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">2</span> 下载安装包</h4>
+                <p>官网下载 APK 并复制到 U 盘根目录</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">3</span> U盘安装</h4>
+                <p>U盘插入电视 → 打开「文件管理器」→ 找到 APK 点击安装</p>
+              </div>
+              <div class="tip-box">
+                <strong>� 提示：</strong>
+                <p>华为/荣耀电视建议使用「华为应用市场」搜索安装，或通过「投屏」功能远程安装。</p>
+              </div>
+            </div>
+          </div>
+          <div class="brand-content" id="other">
+            <div class="install-guide">
+              <div class="install-step">
+                <h4><span class="step-icon">1</span> 确认电视系统</h4>
+                <p>查看电视「设置」→「关于」→「系统版本」，Android 系统可直接安装 APK。</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">2</span> 允许安装未知来源</h4>
+                <p>进入「设置」→「安全」或「通用」→ 开启「允许安装未知来源应用」</p>
+              </div>
+              <div class="install-step">
+                <h4><span class="step-icon">3</span> 下载并安装</h4>
+                <p>下载 APK 到 U 盘 → 插入电视 → 文件管理器打开并安装</p>
+              </div>
+              <div class="tip-box">
+                <strong>� 其他品牌：</strong>
+                <p>创维、长虹、TCL、康佳、乐视等。如无法安装，可尝试「沙发管家」「当贝市场」。</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="step-card">
@@ -325,9 +423,9 @@
           <h3>一键安装下载应用</h3>
           <p>安装完成后打开电视家重生，使用分享码即可一键安装更多应用，或直接浏览频道。</p>
           <div class="step-links">
-            <a href="#" class="step-link">🔗 使用分享码安装</a>
-            <a href="#" class="step-link">📋 查看使用说明</a>
-            <a href="#" class="step-link">❓ 常见问题解答</a>
+            <a href="#" class="step-link" onclick="alert('功能开发中，敬请期待！');return false;">🔗 使用分享码安装</a>
+            <a href="#download" class="step-link">📋 立即下载安装包</a>
+            <a href="https://pan.29o.cn/down.php/babc09863b2a0313c56ffc5c8eeffd73.apk" class="step-link" download>⬇ 下载最新 APK</a>
           </div>
         </div>
       </div>
@@ -347,8 +445,8 @@
             <div>2026.8.21 最新版</div>
           </div>
         </a>
-        <a href="#" class="download-btn ios">
-          <span style="font-size:24px">📱</span>
+        <a href="#tutorial" class="download-btn ios">
+          <span style="font-size:24px">�</span>
           <div>
             <div style="font-size:12px;opacity:0.8">安装教程</div>
             <div>查看教程</div>
@@ -369,6 +467,20 @@
     document.querySelector('.close-bar').addEventListener('click', function() {
       document.getElementById('favoriteBar').style.display = 'none';
       document.querySelector('.navbar').style.top = '0';
+    });
+
+    // 安装教程品牌Tab切换
+    const brandTabs = document.querySelectorAll('.brand-tab');
+    const brandContents = document.querySelectorAll('.brand-content');
+    brandTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const brand = tab.dataset.brand;
+        brandTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        brandContents.forEach(c => c.classList.remove('active'));
+        const target = document.getElementById(brand);
+        if (target) target.classList.add('active');
+      });
     });
   </script>
 </body>
