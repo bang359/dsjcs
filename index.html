@@ -72,6 +72,49 @@
     .phone-item-name { font-size: 14px; font-weight: 500; }
     .phone-item-desc { font-size: 12px; color: rgba(255,255,255,0.4); }
 
+    /* 问题反馈留言板 */
+    .feedback { padding: 60px 24px; }
+    .feedback-inner { max-width: 800px; margin: 0 auto; background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px; }
+    .feedback-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .feedback-header .fb-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #00d4ff, #0066ff); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .feedback-header h2 { font-size: 24px; font-weight: 700; }
+    .feedback-header p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .feedback-form { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .feedback-form input, .feedback-form textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 18px; color: #fff; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s; resize: vertical; }
+    .feedback-form input::placeholder, .feedback-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .feedback-form input:focus, .feedback-form textarea:focus { border-color: rgba(0,212,255,0.5); }
+    .feedback-form textarea { min-height: 100px; }
+    .feedback-form button { padding: 14px 32px; background: linear-gradient(135deg, #00d4ff, #0066ff); border: none; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; }
+    .feedback-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.3); }
+    .feedback-list { display: flex; flex-direction: column; gap: 12px; max-height: 400px; overflow-y: auto; }
+    .feedback-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 16px 20px; }
+    .feedback-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .feedback-item-name { font-size: 15px; font-weight: 600; color: #00d4ff; }
+    .feedback-item-time { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .feedback-item-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .feedback-item-actions { display: flex; gap: 8px; margin-top: 10px; }
+    .feedback-item-actions button { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 12px; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: all 0.2s; }
+    .feedback-item-actions button:hover { background: rgba(255,255,255,0.08); color: #00d4ff; }
+    .feedback-item-actions button.del:hover { color: #ff6b6b; }
+    .reply-form { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 12px; margin-top: 12px; display: none; }
+    .reply-form.active { display: block; }
+    .reply-form textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; color: #fff; font-size: 13px; font-family: inherit; outline: none; resize: vertical; min-height: 60px; }
+    .reply-form textarea:focus { border-color: rgba(0,212,255,0.5); }
+    .reply-form-btns { display: flex; gap: 8px; margin-top: 8px; }
+    .reply-form-btns button { padding: 6px 16px; border-radius: 6px; font-size: 12px; cursor: pointer; border: none; }
+    .reply-form-btns button.submit { background: linear-gradient(135deg, #00d4ff, #0066ff); color: #fff; }
+    .reply-form-btns button.cancel { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+    .reply-list { margin-top: 10px; padding-left: 16px; border-left: 2px solid rgba(0,212,255,0.2); display: flex; flex-direction: column; gap: 8px; }
+    .reply-item { background: rgba(255,255,255,0.02); border-radius: 8px; padding: 10px 14px; }
+    .reply-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .reply-item-name { font-size: 13px; font-weight: 600; color: #00d4ff; }
+    .reply-item-time { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .reply-item-content { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .reply-item-actions { margin-top: 6px; }
+    .reply-item-actions button { background: none; border: none; color: rgba(255,255,255,0.3); font-size: 11px; cursor: pointer; padding: 2px 6px; }
+    .reply-item-actions button:hover { color: #ff6b6b; }
+    .feedback-empty { text-align: center; padding: 40px 0; color: rgba(255,255,255,0.3); font-size: 14px; }
+
     /* 功能区域 */
     .features { padding: 100px 24px; }
     .section-title { text-align: center; margin-bottom: 60px; }
@@ -114,6 +157,14 @@
     .tip-box strong { color: #00d4ff; font-size: 13px; }
     .tip-box p { font-size: 12px; color: rgba(255,255,255,0.7); margin: 4px 0 0; line-height: 1.6; }
 
+    /* 下载+反馈 并排区域 */
+    .download-feedback { padding: 80px 24px; }
+    .download-feedback-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .download-feedback-inner .download { padding: 0; text-align: center; position: relative; overflow: visible; }
+    .download-feedback-inner .download::before { display: none; }
+    .download-feedback-inner .feedback { padding: 0; }
+    .download-feedback-inner .feedback-inner { padding: 32px; }
+
     /* 下载区域 */
     .download { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; }
     .download::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 60%); pointer-events: none; }
@@ -135,6 +186,8 @@
 
     /* 响应式 */
     @media (max-width: 900px) {
+      .download-feedback-inner { grid-template-columns: 1fr; }
+      .feedback-list { max-height: 300px; }
       .hero-content { flex-direction: column; text-align: center; }
       .hero-visual { flex: none; }
       .visual-wrapper { flex-direction: column; gap: 20px; }
@@ -166,6 +219,7 @@
         <a href="#features">功能特点</a>
         <a href="#tutorial">安装教程</a>
         <a href="#download">下载</a>
+        <a href="#feedback">问题反馈</a>
       </div>
       <a href="https://pan.29o.cn/down.php/babc09863b2a0313c56ffc5c8eeffd73.apk" class="nav-download" download>立即下载</a>
     </div>
@@ -432,28 +486,62 @@
     </div>
   </section>
 
-  <!-- 下载区域 -->
-  <section class="download" id="download">
-    <div class="download-inner">
-      <h2>下载电视家重生</h2>
-      <p>支持智能电视、投影仪、机顶盒、手机平板</p>
-      <div class="download-buttons">
-        <a href="https://pan.29o.cn/down.php/babc09863b2a0313c56ffc5c8eeffd73.apk" class="download-btn android" download>
-          <span style="font-size:24px">🤖</span>
-          <div>
-            <div style="font-size:12px;opacity:0.8">Android 下载</div>
-            <div>2026.8.21 最新版</div>
+  <!-- 下载 + 反馈 并排 -->
+  <section class="download-feedback">
+    <div class="download-feedback-inner">
+      <!-- 下载 -->
+      <div class="download" id="download">
+        <div class="download-inner">
+          <h2>下载电视家重生</h2>
+          <p>支持智能电视、投影仪、机顶盒、手机平板</p>
+          <div class="download-buttons">
+            <a href="https://pan.29o.cn/down.php/babc09863b2a0313c56ffc5c8eeffd73.apk" class="download-btn android" download>
+              <span style="font-size:24px">🤖</span>
+              <div>
+                <div style="font-size:12px;opacity:0.8">Android 下载</div>
+                <div>2026.8.21 最新版</div>
+              </div>
+            </a>
+            <a href="#tutorial" class="download-btn ios">
+              <span style="font-size:24px">📖</span>
+              <div>
+                <div style="font-size:12px;opacity:0.8">安装教程</div>
+                <div>查看教程</div>
+              </div>
+            </a>
           </div>
-        </a>
-        <a href="#tutorial" class="download-btn ios">
-          <span style="font-size:24px">�</span>
-          <div>
-            <div style="font-size:12px;opacity:0.8">安装教程</div>
-            <div>查看教程</div>
-          </div>
-        </a>
+          <p class="download-note">支持 Android 5.0 及以上系统 · 版本 2026.8.21 · 大小 25.6MB</p>
+        </div>
       </div>
-      <p class="download-note">支持 Android 5.0 及以上系统 · 版本 2026.8.21 · 大小 25.6MB</p>
+
+      <!-- 问题反馈 -->
+      <div class="feedback" id="feedback">
+        <div class="feedback-inner">
+          <div class="feedback-header">
+            <div class="fb-icon">💬</div>
+            <div>
+              <h2>问题反馈</h2>
+              <p>遇到问题或有建议？留言告诉我们</p>
+            </div>
+          </div>
+          <div class="feedback-form">
+            <input type="text" id="fb-name" placeholder="您的昵称（选填）" maxlength="20">
+            <textarea id="fb-content" placeholder="请输入您的反馈或建议..." maxlength="2000"></textarea>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button onclick="submitFeedback()" style="padding:12px 28px;background:linear-gradient(135deg,#00d4ff,#0066ff);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;">✉ 提交留言</button>
+              <button onclick="exportFeedback()" style="padding:12px 20px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:13px;cursor:pointer;">⬇ 导出</button>
+              <label style="padding:12px 20px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;">
+                ⬆ 导入
+                <input type="file" accept=".json" onchange="importFeedback(event)" style="display:none;">
+              </label>
+              <button onclick="clearFeedback()" style="padding:12px 20px;background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.3);border-radius:10px;color:#ff6b6b;font-size:13px;cursor:pointer;">🗑 清空</button>
+            </div>
+          </div>
+          <div class="feedback-list" id="feedbackList">
+            <div class="feedback-empty">暂无留言，快来抢沙发吧~</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -482,6 +570,181 @@
         if (target) target.classList.add('active');
       });
     });
+
+    // 问题反馈留言板
+    var fbIdCounter = 0;
+    function genFbId() { fbIdCounter++; return 'fb_' + Date.now() + '_' + fbIdCounter; }
+
+    function loadFeedback() {
+      var list = document.getElementById('feedbackList');
+      var data = [];
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      if (data.length === 0) {
+        list.innerHTML = '<div class="feedback-empty">暂无留言，快来抢沙发吧~</div>';
+        return;
+      }
+      list.innerHTML = data.map(function(item) { return renderItem(item, data); }).join('');
+      // 绑定回复/删除事件
+      list.querySelectorAll('[data-action]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var action = btn.getAttribute('data-action');
+          var id = btn.getAttribute('data-id');
+          if (action === 'reply') toggleReplyForm(id);
+          else if (action === 'delete') deleteItem(id);
+          else if (action === 'submitReply') submitReply(id);
+          else if (action === 'cancelReply') toggleReplyForm(id);
+          else if (action === 'deleteReply') deleteReply(id, btn.getAttribute('data-rid'));
+        });
+      });
+    }
+
+    function renderItem(item, data) {
+      var replies = (item.replies || []).map(function(r) {
+        return '<div class="reply-item">' +
+          '<div class="reply-item-header">' +
+            '<span class="reply-item-name">' + escapeHtml(r.name) + (r.replyTo ? ' 回复 <span style="color:rgba(255,255,255,0.5)">@' + escapeHtml(r.replyTo) + '</span>' : '') + '</span>' +
+            '<span class="reply-item-time">' + escapeHtml(r.time) + '</span>' +
+          '</div>' +
+          '<div class="reply-item-content">' + escapeHtml(r.content) + '</div>' +
+          '<div class="reply-item-actions">' +
+            '<button data-action="deleteReply" data-id="' + item.id + '" data-rid="' + r.id + '">🗑 删除</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+      return '<div class="feedback-item" data-id="' + item.id + '">' +
+        '<div class="feedback-item-header">' +
+          '<span class="feedback-item-name">' + escapeHtml(item.name) + '</span>' +
+          '<span class="feedback-item-time">' + escapeHtml(item.time) + '</span>' +
+        '</div>' +
+        '<div class="feedback-item-content">' + escapeHtml(item.content) + '</div>' +
+        '<div class="feedback-item-actions">' +
+          '<button data-action="reply" data-id="' + item.id + '">💬 回复</button>' +
+          '<button class="del" data-action="delete" data-id="' + item.id + '">🗑 删除</button>' +
+        '</div>' +
+        '<div class="reply-form" id="replyForm_' + item.id + '">' +
+          '<textarea id="replyText_' + item.id + '" placeholder="写下你的回复..."></textarea>' +
+          '<div class="reply-form-btns">' +
+            '<button class="submit" data-action="submitReply" data-id="' + item.id + '">发送回复</button>' +
+            '<button class="cancel" data-action="cancelReply" data-id="' + item.id + '">取消</button>' +
+          '</div>' +
+        '</div>' +
+        (replies ? '<div class="reply-list">' + replies + '</div>' : '') +
+      '</div>';
+    }
+
+    function toggleReplyForm(id) {
+      var form = document.getElementById('replyForm_' + id);
+      if (!form) return;
+      form.classList.toggle('active');
+      if (form.classList.contains('active')) {
+        setTimeout(function() { var el = document.getElementById('replyText_' + id); if (el) el.focus(); }, 50);
+      }
+    }
+
+    function submitReply(parentId) {
+      var textarea = document.getElementById('replyText_' + parentId);
+      var content = textarea.value.trim();
+      if (!content) { alert('请输入回复内容'); return; }
+      var data = [];
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      var parent = data.find(function(i) { return i.id === parentId; });
+      if (!parent) return;
+      var now = new Date();
+      var time = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+      var reply = { id: genFbId(), name: '我', content: content, time: time };
+      if (!parent.replies) parent.replies = [];
+      parent.replies.push(reply);
+      localStorage.setItem('dsj_feedback', JSON.stringify(data));
+      loadFeedback();
+    }
+
+    function deleteItem(id) {
+      if (!confirm('确定要删除这条留言吗？')) return;
+      var data = [];
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      data = data.filter(function(i) { return i.id !== id; });
+      localStorage.setItem('dsj_feedback', JSON.stringify(data));
+      loadFeedback();
+    }
+
+    function deleteReply(parentId, replyId) {
+      if (!confirm('确定要删除这条回复吗？')) return;
+      var data = [];
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      var parent = data.find(function(i) { return i.id === parentId; });
+      if (parent && parent.replies) {
+        parent.replies = parent.replies.filter(function(r) { return r.id !== replyId; });
+      }
+      localStorage.setItem('dsj_feedback', JSON.stringify(data));
+      loadFeedback();
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.innerText = str || '';
+      return div.innerHTML;
+    }
+
+    function submitFeedback() {
+      var name = document.getElementById('fb-name').value.trim();
+      var content = document.getElementById('fb-content').value.trim();
+      if (!content) { alert('请输入留言内容'); return; }
+      if (!name) name = '匿名用户';
+      var now = new Date();
+      var time = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+      var item = { id: genFbId(), name: name, content: content, time: time, replies: [] };
+      var data = [];
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      data.unshift(item);
+      localStorage.setItem('dsj_feedback', JSON.stringify(data));
+      document.getElementById('fb-name').value = '';
+      document.getElementById('fb-content').value = '';
+      loadFeedback();
+    }
+
+    function exportFeedback() {
+      var data = [];
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      if (data.length === 0) { alert('暂无留言可导出'); return; }
+      var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      var now = new Date();
+      a.download = 'feedback_' + now.getFullYear() + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importFeedback(event) {
+      var file = event.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          var imported = JSON.parse(e.target.result);
+          if (!Array.isArray(imported)) throw new Error('格式错误');
+          var current = [];
+          try { current = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+          var merged = imported.concat(current);
+          localStorage.setItem('dsj_feedback', JSON.stringify(merged));
+          loadFeedback();
+          alert('导入成功！共 ' + imported.length + ' 条留言');
+        } catch(err) {
+          alert('导入失败：文件格式不正确');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function clearFeedback() {
+      if (!confirm('确定要清空所有留言吗？此操作不可恢复！')) return;
+      localStorage.removeItem('dsj_feedback');
+      loadFeedback();
+    }
+
+    loadFeedback();
   </script>
 </body>
 </html>
