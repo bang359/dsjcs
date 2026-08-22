@@ -578,12 +578,40 @@
     function loadFeedback() {
       var list = document.getElementById('feedbackList');
       var data = [];
-      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      try {
+        var raw = localStorage.getItem('dsj_feedback');
+        console.log('读取留言数据，原始长度:', raw ? raw.length : 0);
+        data = JSON.parse(raw || '[]');
+      } catch(e) {
+        console.error('解析留言数据失败:', e);
+        data = [];
+      }
+      if (!Array.isArray(data)) { console.warn('数据格式错误，重置为数组'); data = []; }
+      // 数据迁移：为旧数据添加 id 和 replies 字段
+      var migrated = false;
+      data.forEach(function(item) {
+        if (!item.id) { item.id = genFbId(); migrated = true; }
+        if (!item.replies) { item.replies = []; migrated = true; }
+        if (item.replies && Array.isArray(item.replies)) {
+          item.replies.forEach(function(r) {
+            if (!r.id) { r.id = genFbId(); migrated = true; }
+          });
+        }
+      });
+      if (migrated) {
+        try { localStorage.setItem('dsj_feedback', JSON.stringify(data)); console.log('数据迁移完成'); } catch(e) { console.error('保存迁移数据失败:', e); }
+      }
+      console.log('留言总数:', data.length);
       if (data.length === 0) {
         list.innerHTML = '<div class="feedback-empty">暂无留言，快来抢沙发吧~</div>';
         return;
       }
-      list.innerHTML = data.map(function(item) { return renderItem(item, data); }).join('');
+      var html = '';
+      data.forEach(function(item) {
+        try { html += renderItem(item); } catch(err) { console.warn('渲染单条留言失败:', err, item); }
+      });
+      if (!html) { html = '<div class="feedback-empty">留言加载失败，请清空后重新提交</div>'; console.error('所有留言渲染失败'); }
+      list.innerHTML = html;
       // 绑定回复/删除事件
       list.querySelectorAll('[data-action]').forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -694,9 +722,15 @@
       var time = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
       var item = { id: genFbId(), name: name, content: content, time: time, replies: [] };
       var data = [];
-      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) {}
+      try { data = JSON.parse(localStorage.getItem('dsj_feedback') || '[]'); } catch(e) { data = []; }
       data.unshift(item);
-      localStorage.setItem('dsj_feedback', JSON.stringify(data));
+      try {
+        localStorage.setItem('dsj_feedback', JSON.stringify(data));
+        console.log('留言保存成功，当前总数:', data.length);
+      } catch(e) {
+        alert('保存失败：' + e.message + '\n可能是本地存储空间已满，请尝试导出后清空旧数据。');
+        return;
+      }
       document.getElementById('fb-name').value = '';
       document.getElementById('fb-content').value = '';
       loadFeedback();
